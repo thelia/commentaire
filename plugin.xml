@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<descriptif lang="fr">
+  <titre>Commentaire de fiche produit</titre>
+  <chapo></chapo>
+  <description>
+      Permet à un commerçant de mettre des commentaires sur ses fiches produits et de les afficher sur son site.
+  </description>
+  <postscriptum></postscriptum>
+</descriptif>
+<version>0.1</version>
+<auteur>
+  <nom>Manuel Raynaud</nom>
+  <societe>openstudio</societe>
+  <email>mraynaud@openstudio.fr</email>
+  <web>http://thelia.net</web>
+</auteur>
+<type>classique</type>
+<thelia>1.5.3.4</thelia>
+<etat>production</etat>
+<documentation>Readme.txt</documentation>
+</plugin>
