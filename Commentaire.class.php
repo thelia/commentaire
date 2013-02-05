@@ -26,6 +26,6 @@ class Commentaire extends PluginsClassiques
   `produit_id` INT NULL ,
   PRIMARY KEY (`id`) );";
         
-        $this->query($query);
+        $this->query($query, true);
     }
 }
