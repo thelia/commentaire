@@ -1,5 +1,25 @@
 <?php
-
+/*************************************************************************************/
+/*                                                                                   */
+/*      Thelia	                                                                     */
+/*                                                                                   */
+/*      Copyright (c) 2005-2013 OpenStudio                                           */
+/*      email : info@thelia.fr                                                       */
+/*      web : http://www.thelia.net                                                  */
+/*                                                                                   */
+/*      This program is free software; you can redistribute it and/or modify         */
+/*      it under the terms of the GNU General Public License as published by         */
+/*      the Free Software Foundation; either version 3 of the License                */
+/*                                                                                   */
+/*      This program is distributed in the hope that it will be useful,              */
+/*      but WITHOUT ANY WARRANTY; without even the implied warranty of               */
+/*      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                */
+/*      GNU General Public License for more details.                                 */
+/*                                                                                   */
+/*      You should have received a copy of the GNU General Public License            */
+/*      along with this program.  If not, see <http://www.gnu.org/licenses/>.        */
+/*                                                                                   */
+/*************************************************************************************/
 class Commentaire extends PluginsClassiques
 {
     
@@ -10,7 +30,8 @@ class Commentaire extends PluginsClassiques
     public $produit_id;
     
     public $bddvars = array("id", "titre", "message", "actif", "produit_id");
-    public $table = "commentaire";
+    public $table = self::TABLE;
+    const TABLE = "commentaire";
     
     /**
      * Constructeur de la class. Non essentielle mais permet de fixer le nom du
@@ -54,5 +75,26 @@ class Commentaire extends PluginsClassiques
                         
             $commentaire->add();
         }
+    }
+    
+    public function boucle($texte, $args)
+    {
+        $id = lireTag($args, "id", "int");
+        
+        if(empty($id)) return;
+        
+        $return = "";
+        
+        $query = "SELECT id, titre, message FROM ".$this->table." WHERE actif=1 AND produit_id=".$id;
+        
+        foreach ($this->query_liste($query) as $result) {
+            $temp = str_replace("#ID", $result->id, $texte);
+            $temp = str_replace("#TITRE", $result->titre, $temp);
+            $temp = str_replace("#MESSAGE", $result->message, $temp);
+            
+            $return .= $temp;
+        }
+        
+        return $return;
     }
 }
