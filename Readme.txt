@@ -12,7 +12,7 @@ paramètres de sortie de la boucle :
 
 exemple de boucle, nous nous situons dans une boucle produit : 
 <ul>
-<THELIA_COM type="COMMENTAITE" id="#ID">
+<THELIA_COM type="COMMENTAIRE" id="#ID">
     <li>#TITRE : #MESSAGE</li>
 </THELIA_COM>
 </ul>
